@@ -7,11 +7,24 @@ using namespace std;
 class Receiver
 {
 private:
-	vector<vector<int>> footfallData;
+	vector<Receiver> footfallData;
+	int id = 0;
+	int hour = 0;
+	int minute = 0;
+	int second = 0;
+	int day = 0;
+	int date;
+	int month;
+	int year;
+	float hourlyAverage = 0;
 public:
-	void storeFootfallData(const string&);
+	Receiver();
+	Receiver(int, int, int, float);
+	Receiver(int, int, int, int, int, int, int, int);
 	void readSenderData();
-	//float averageFootfallsPerHourDaily();
+	void storeFootfallData(const string&);
+	void averageFootfallsPerHourDaily();
+	void displayhourlyAverageDailyData(vector<Receiver>);
 	//float averageDailyFootfallsWeekly();
 	//float peakDailyFootfallLastMonth();
 };
