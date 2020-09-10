@@ -7,6 +7,18 @@
 
 using namespace std;
 
+void Receiver::readSenderData()
+{
+	string footfallRecordString;
+	getline(cin, footfallRecordString);
+	cout << footfallRecordString << endl;
+	while (getline(cin, footfallRecordString))
+	{
+		cout << footfallRecordString << endl;
+		storeFootfallData(footfallRecordString);
+	}
+}
+
 void Receiver::storeFootfallData(const string& footfallRecordString)
 {
 	vector<int> footfallRecord;
@@ -23,15 +35,10 @@ void Receiver::storeFootfallData(const string& footfallRecordString)
 int main()
 {
 	Receiver receiverObj;
-	string footfallRecordString;
+
 	cout << "In receiver main" << endl;
-	getline(cin, footfallRecordString);
-	cout << footfallRecordString << endl;
-	while (getline(cin, footfallRecordString))
-	{
-		cout << footfallRecordString << endl;
-		receiverObj.storeFootfallData(footfallRecordString);
-	}
+	
+	receiverObj.readSenderData();
 
 	return 0;
 }
