@@ -84,7 +84,7 @@ void printdata(std::vector<std::vector<int>> &data)
 int main()
 {
     // Creating an object of CSVfile reader
-    CSVReader filereader("test-data/visitdata1.csv",",");
+    CSVReader filereader("test-data/visitdata2.csv",",");
     // Get the data from CSV File
     std::vector<std::vector<std::string>> actualdata  = filereader.fetchData();
     std::vector<std::vector<int>> validData  = removeinvalidentries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
