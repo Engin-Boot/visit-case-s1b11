@@ -4,6 +4,8 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <ctime>
+#include <algorithm>
 
 using namespace std;
 
@@ -135,6 +137,77 @@ void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeekly
 	}
 }
 
+void Receiver::peakDailyFootfallLastMonth()
+{
+	vector<Receiver> dailyFootfallLastMonthData;
+	vector<Receiver> footfallLastMonthData = getLastMonthFootfallData();
+	Receiver receiverObj(footfallLastMonthData[0].date, footfallLastMonthData[0].month, footfallLastMonthData[0].year, 0);
+	for(unsigned int i = 0; i < footfallLastMonthData.size(); i++)
+	{
+		if(receiverObj.date == footfallLastMonthData[i].date)
+		{
+			receiverObj.dailyCount += 1;
+		}
+		else
+		{
+			dailyFootfallLastMonthData.push_back(receiverObj);
+			receiverObj.date = footfallData[i].date;
+			receiverObj.month = footfallData[i].month;
+			receiverObj.year = footfallData[i].year;
+			receiverObj.dailyCount = 0;
+			i--;
+		}
+	}
+	dailyFootfallLastMonthData.push_back(receiverObj);
+	
+	vector<Receiver> peakDailyFootfallsLastMonthData = getPeakDailyFootfallsLastMonth(dailyFootfallLastMonthData);
+	
+	displayPeakDailyFootfallLastMonth(peakDailyFootfallsLastMonthData);
+}
+
+vector<Receiver> Receiver::getLastMonthFootfallData()
+{
+	time_t currentTime = time(0);
+	tm *localTime = localtime(&currentTime);
+	int lastMonth = localTime->tm_mon;
+	vector<Receiver> lastMonthFootfallData;
+	for(unsigned int i = 0; i < footfallData.size(); i++)
+	{
+		if(lastMonth == footfallData[i].month)
+		{
+			lastMonthFootfallData.push_back(footfallData[i]);
+		}
+	}
+	return lastMonthFootfallData;
+}
+
+vector<Receiver> Receiver::getPeakDailyFootfallsLastMonth(vector<Receiver> dailyFootfallLastMonthData)
+{
+	sort(dailyFootfallLastMonthData.begin(), dailyFootfallLastMonthData.end(), [](const Receiver& firstObj, const Receiver& secondObj)
+	{
+    		return firstObj.dailyCount > secondObj.dailyCount;
+	});
+	vector<Receiver> peakDailyFootfallsLastMonth;
+	int peakCount = dailyFootfallLastMonthData[0].dailyCount;
+	for(unsigned int i = 0; i < dailyFootfallLastMonthData.size(); i++)
+	{
+		if(peakCount == dailyFootfallLastMonthData[i].dailyCount)
+		{
+			peakDailyFootfallsLastMonth.push_back(dailyFootfallLastMonthData[i]);
+		}
+	}
+	return peakDailyFootfallsLastMonth;
+}
+
+void Receiver::displayPeakDailyFootfallLastMonth(vector<Receiver> peakDailyFootfallsLastMonthData)
+{
+	cout<<"Date "<<"Month "<<"Year "<<"Peak Count"<<endl;
+	for(unsigned int i = 0; i < peakDailyFootfallsLastMonthData.size(); i++)
+	{
+		cout<<peakDailyFootfallsLastMonthData[i].date<<" "<<peakDailyFootfallsLastMonthData[i].month<<" "<<peakDailyFootfallsLastMonthData[i].year<<" "<<peakDailyFootfallsLastMonthData[i].dailyCount<<endl;
+	}
+}
+
 int main()
 {
 	Receiver receiverObj;
@@ -144,6 +217,6 @@ int main()
 	receiverObj.readSenderData();
 	receiverObj.averageFootfallsPerHourDaily();
 	receiverObj.averageDailyFootfallsWeekly();
-	
+	receiverObj.peakDailyFootfallLastMonth();
 	return 0;
 }
