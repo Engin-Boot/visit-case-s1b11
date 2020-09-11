@@ -7,10 +7,10 @@
 #include <algorithm>
 #include "SenderHeader.h"
 
-std::vector<std::vector<std::string> > CSVReader::fetchActualFootfallData()
+std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
 {
     std::fstream file;
-    std::vector<std::vector<std::string> > dataList;
+    std::vector<std::vector<std::string>> dataList;
     std::string line = "";
     std::string data = "";
     // Iterate through each line and split the content using delimeter
