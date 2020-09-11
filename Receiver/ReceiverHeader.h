@@ -16,6 +16,7 @@ private:
 	int date;
 	int month;
 	int year;
+	int dailyCount = 0;
 	float hourlyAverage = 0;
 	float weeklyAverage = 0;
 public:
@@ -30,5 +31,8 @@ public:
 	void displayDailyAverageWeeklyData(vector<Receiver>);
 	void averageDailyFootfallsWeekly();
 	int setFlagStatus(int);
-	//float peakDailyFootfallLastMonth();
+	void peakDailyFootfallLastMonth();
+	vector<Receiver> getLastMonthFootfallData();
+	vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
+	void displayPeakDailyFootfallLastMonth(vector<Receiver>);
 };
