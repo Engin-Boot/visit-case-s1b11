@@ -5,9 +5,9 @@
 #include <string>
 #include<sstream>
 #include <algorithm>
-#include "Sender.h"
+#include "SenderHeader.h"
 
-std::vector<std::vector<std::string> > CSVReader::fetchData()
+std::vector<std::vector<std::string> > CSVReader::fetchActualFootfallData()
 {
     std::fstream file;
     std::vector<std::vector<std::string> > dataList;
@@ -46,31 +46,31 @@ bool isnumber(std::string s)
 	return true;    
 }
 
-std::vector<int> getrow(std::vector<std::string>& rowvec)
+std::vector<int> getValidRow(std::vector<std::string>& rowvec)
 {
-	std::vector<int> row;
+	std::vector<int> validRow;
 	for (std::string data : rowvec)
        		 {
             		if(isnumber(data)==true)
-			row.push_back(stoi(data));
+			validRow.push_back(stoi(data));
         	 }
-	return row;
+	return validRow;
 }
 
 
-std::vector<std::vector<int>> removeinvalidentries(std::vector<std::vector<std::string>>& actualdata)
+std::vector<std::vector<int>> removeInvalidEntries(std::vector<std::vector<std::string>>& actualdata)
 {
 	std::vector<std::vector<int>> validdata;
 	for(std::vector<std::string> vec:actualdata)
 	{
-		std::vector<int> rowvector = getrow(vec);
-	if(rowvector.size()==8)
-		validdata.push_back(rowvector);
+		std::vector<int> ValidRow = getValidRow(vec);
+	if(ValidRow.size()==8)
+		validdata.push_back(ValidRow);
 	}
 	return validdata;
 }
 
-void printdata(std::vector<std::vector<int>> &data)
+void printValiddata(std::vector<std::vector<int>> &data)
 {
       for (std::vector<int> vec : data)
     {
@@ -81,15 +81,19 @@ void printdata(std::vector<std::vector<int>> &data)
         std::cout << std::endl; 
      }
 }
+void fetchValidateandPrintFootfallData(std::string filename)
+{	
+   // Creating an object of CSVfile reader
+	CSVReader filereader(filename,",");
+    // Get the data from CSV File
+    std::vector<std::vector<std::string>> actualdata  = filereader.fetchActualFootfallData();
+    std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
+    // Print the content
+    // data is only non-negative integer
+    printValiddata(validData);
+}
 int main()
 {
-    // Creating an object of CSVfile reader
-    CSVReader filereader("test-data/visitdata2.csv",",");
-    // Get the data from CSV File
-    std::vector<std::vector<std::string>> actualdata  = filereader.fetchData();
-    std::vector<std::vector<int>> validData  = removeinvalidentries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
-    // Print the content
-    
-    printdata(validData);
+    fetchValidateandPrintFootfallData("test-data/visitdata1.csv");
     return 0;
 }
