@@ -10,7 +10,7 @@
 std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
 {
     std::fstream file;
-    std::vector<std::vector<std::string>> dataList;
+    std::vector<std::vector<std::string>> footfallData;
     std::string line = "";
     std::string data = "";
     // Iterate through each line and split the content using delimeter
@@ -22,16 +22,15 @@ std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
         // used for breaking words
         std::stringstream str(line);
 
-        // read every column data of a row and
-        // store it in a string variable, 'word'
-        std::vector<std::string> vec;
+        // read every column data of a row and store it in a string variable, 'data'
+        std::vector<std::string> footfallEntry; //one footfall data
         while (getline(str, data, ','))
         {
             // add all the column data
             // of a row to a vector vec
-            vec.push_back(data);
+            footfallData.push_back(data);
         }
-        dataList.push_back(vec);
+        footfallData.push_back(vec);
      }
     file.close();
     return dataList;
@@ -40,10 +39,10 @@ std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
 bool isnumber(std::string s)
 {
     for (unsigned int i = 0; i < s.length(); i++)
-		if (isdigit(s[i]) == false)
-			return false;
+	if (isdigit(s[i]) == false)
+		return false;
 
-	return true;    
+    return true;    
 }
 
 std::vector<int> getValidRow(std::vector<std::string>& rowvec)
@@ -89,7 +88,7 @@ void fetchValidateandPrintFootfallData(std::string filename)
     std::vector<std::vector<std::string>> actualdata  = filereader.fetchActualFootfallData();
     std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
     // Print the content
-    // data is only non-negative integer
+    // data is now only non-negative integer because person id, date time are non negative integers
     printValiddata(validData);
 }
 int main()
