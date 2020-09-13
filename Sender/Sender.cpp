@@ -28,7 +28,7 @@ std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
         {
             // add all the column data
             // of a row to a vector vec
-            footfallData.push_back(data);
+            footfallEntry.push_back(data);
         }
         footfallData.push_back(vec);
      }
