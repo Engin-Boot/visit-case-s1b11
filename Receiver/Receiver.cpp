@@ -404,7 +404,7 @@ int main()
 	receiverObj.displayDailyAverageWeeklyData(averageDailyFootfallsWeeklyResult);
 	
 	vector<Receiver> peakDailyFootfallLastMonthResult = receiverObj.peakDailyFootfallLastMonth(footfallData);
-	receiverObj.displayPeakDailyFootfallLastMonth(peakDailyFootfallLastMonthResul);
+	receiverObj.displayPeakDailyFootfallLastMonth(peakDailyFootfallLastMonthResult);
 	
 	return 0;
 }
