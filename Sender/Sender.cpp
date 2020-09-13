@@ -30,10 +30,10 @@ std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
             // of a row to a vector vec
             footfallEntry.push_back(data);
         }
-        footfallData.push_back(vec);
+        footfallData.push_back(footfallEntry);
      }
     file.close();
-    return dataList;
+    return footfallData;
 }
 
 bool isnumber(std::string s)
