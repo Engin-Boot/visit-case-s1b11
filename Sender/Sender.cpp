@@ -13,21 +13,20 @@ std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
     std::vector<std::vector<std::string>> footfallData;
     std::string line = "";
     std::string data = "";
+	
     // Iterate through each line and split the content using delimeter
+	
     file.open(fileName);
     getline(file,line);
     std::cout<<line<<std::endl;
     while (getline(file, line))
     {
-        // used for breaking words
         std::stringstream str(line);
 
-        // read every column data of a row and store it in a string variable, 'data'
         std::vector<std::string> footfallEntry; //one footfall data
         while (getline(str, data, ','))
         {
-            // add all the column data
-            // of a row to a vector vec
+            // add all the column data of a row to a vector footfallEntry
             footfallEntry.push_back(data);
         }
         footfallData.push_back(footfallEntry);
@@ -49,10 +48,10 @@ std::vector<int> getValidRow(std::vector<std::string>& rowvec)
 {
 	std::vector<int> validRow;
 	for (std::string data : rowvec)
-       		 {
-            		if(isnumber(data)==true)
-			validRow.push_back(stoi(data));
-        	 }
+       	{
+            	if(isnumber(data)==true)
+		validRow.push_back(stoi(data));
+        }
 	return validRow;
 }
 
@@ -89,7 +88,12 @@ void fetchValidateandPrintFootfallData(std::string filename)
     std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
     // Print the content
     // data is now only non-negative integer because person id, date time are non negative integers
-    printValiddata(validData);
+   int halfofFetchedEntriesfromSensorData = actualdata.size()/2;
+   int totalValidEntries = validData.size();
+   	if(totalValidEntries < halfofFetchedEntriesfromSensorData)
+		std::cout<<"No valid data"<<std::endl;
+	else
+    		printValiddata(validData);
 }
 int main()
 {
