@@ -36,4 +36,4 @@ jobs:
       run: gcov -r Receiver.cpp
       
     - name: build Receiver-Test
-      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverTestExe Receiver-Test/ReceiverTest.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o ReceiverTestExe Receiver-Test/*.cpp
