@@ -1,4 +1,3 @@
-#include "ReceiverHeader.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -6,6 +5,7 @@
 #include <vector>
 #include <ctime>
 #include <algorithm>
+#include "ReceiverHeader.h"
 
 using namespace std;
 
