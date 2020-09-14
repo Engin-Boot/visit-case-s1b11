@@ -79,7 +79,7 @@ void printValiddata(std::vector<std::vector<int>> &data)
         std::cout << std::endl; 
      }
 }
-void fetchValidateandPrintFootfallData(std::string filename)
+void Sender::fetchValidateandPrintFootfallData(std::string filename)
 {	
    // Creating an object of CSVfile reader
 	CSVReader filereader(filename,",");
@@ -97,8 +97,7 @@ void fetchValidateandPrintFootfallData(std::string filename)
 }
 int main()
 {
-    using namespace Sender;
-	fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
+    Sender::fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
     //fetchValidateandPrintFootfallData("test-data/invalidvisitdata1.csv");
     
     return 0;
