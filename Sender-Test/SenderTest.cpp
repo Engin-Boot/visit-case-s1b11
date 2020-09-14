@@ -34,12 +34,9 @@ TEST_CASE("when footfall data containing some invalid data is read by sender the
 
 TEST_CASE("when footfall data containing large number of more invalid data is read by sender then it prints no valid data to console and writes nothing to csv file") 
 {
-     Sender::fetchValidateandPrintFootfallData("test-data/invalidvisitdata1.csv");
-     std::ifstream fin1("OutputSenderTestData/nodata.txt");
-    std::string testData((std::istreambuf_iterator<char>(fin1)), std::istreambuf_iterator<char>());
-    fin1.close();
+    Sender::fetchValidateandPrintFootfallData("test-data/invalidvisitdata1.csv");
     std::ifstream fin2("OutputSenderTestData/visitdataout1.txt");
     std::string obtainedData((std::istreambuf_iterator<char>(fin2)), std::istreambuf_iterator<char>());
     fin2.close();
-    REQUIRE(testData == obtainedData);    
+    REQUIRE(obtainedData == "\n");    
 }
