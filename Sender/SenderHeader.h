@@ -15,3 +15,8 @@ public:
     // Function to fetch data from a CSV File
     std::vector<std::vector<std::string>> fetchActualFootfallData();
 };
+
+namespace Sender
+{
+void fetchValidateandPrintFootfallData(std::string);
+}
