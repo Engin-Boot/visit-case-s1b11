@@ -24,7 +24,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o ReceiverExe Receiver/Receiver.cpp
       
     - name: static analysis
-      run: cppcheck --enable=all --suppress=missingIncludeSystem -iReceiver-Test/Receivertest.cpp --error-exitcode=1  .
+      run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver-Test/ReceiverTest.cpp .
       
     - name: run
       run: ./SenderExe | ./ReceiverExe
