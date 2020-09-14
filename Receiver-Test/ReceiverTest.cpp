@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "../Receiver/ReceiverHeader.h"
-#include "../includes/catch.hpp"
+#include "catch.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
