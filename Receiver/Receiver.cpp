@@ -232,14 +232,21 @@ int main()
 	
 	vector<Receiver> footfallData = receiverObj.readSenderData();
 	
-	vector<Receiver> averageFootfallsPerHourDailyResult = receiverObj.averageFootfallsPerHourDaily(footfallData);
-	receiverObj.displayHourlyAverageDailyData(averageFootfallsPerHourDailyResult);
+	if(footfallData.size() != 0)
+	{
+		vector<Receiver> averageFootfallsPerHourDailyResult = receiverObj.averageFootfallsPerHourDaily(footfallData);
+		receiverObj.displayHourlyAverageDailyData(averageFootfallsPerHourDailyResult);
 	
-	vector<Receiver> averageDailyFootfallsWeeklyResult = receiverObj.averageDailyFootfallsWeekly(footfallData);
-	receiverObj.displayDailyAverageWeeklyData(averageDailyFootfallsWeeklyResult);
+		vector<Receiver> averageDailyFootfallsWeeklyResult = receiverObj.averageDailyFootfallsWeekly(footfallData);
+		receiverObj.displayDailyAverageWeeklyData(averageDailyFootfallsWeeklyResult);
 	
-	vector<Receiver> peakDailyFootfallLastMonthResult = receiverObj.peakDailyFootfallLastMonth(footfallData);
-	receiverObj.displayPeakDailyFootfallLastMonth(peakDailyFootfallLastMonthResult);
+		vector<Receiver> peakDailyFootfallLastMonthResult = receiverObj.peakDailyFootfallLastMonth(footfallData);
+		receiverObj.displayPeakDailyFootfallLastMonth(peakDailyFootfallLastMonthResult);
+	}
+	else
+	{
+		cout<<"No data"<<endl;
+	}
 	
 	return 0;
 }
