@@ -18,7 +18,6 @@ std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
 	
     file.open(fileName);
     getline(file,line);
-    std::cout<<line<<std::endl;
     while (getline(file, line))
     {
         std::stringstream str(line);
@@ -70,6 +69,7 @@ std::vector<std::vector<int>> removeInvalidEntries(std::vector<std::vector<std::
 
 void printValiddata(std::vector<std::vector<int>> &data)
 {
+    std::cout<<"id,hour,minute,second,day,date,month,year"<<std::endl;
       for (std::vector<int> vec : data)
     {
         for (int rowdata : vec)
