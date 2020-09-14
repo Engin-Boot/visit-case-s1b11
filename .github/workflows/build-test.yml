@@ -37,3 +37,6 @@ jobs:
       
     - name: build Receiver-Test
       run: g++ -Wall -Wextra -Werror --coverage -o ReceiverTestExe Receiver-Test/*.cpp
+    
+    - name: run Receiver-Test
+      run: ./ReceiverTestExe
