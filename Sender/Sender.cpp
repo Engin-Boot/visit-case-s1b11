@@ -97,7 +97,7 @@ void fetchValidateandPrintFootfallData(std::string filename)
 }
 int main()
 {
-    fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
+    Sender::fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
     //fetchValidateandPrintFootfallData("test-data/invalidvisitdata1.csv");
     
     return 0;
