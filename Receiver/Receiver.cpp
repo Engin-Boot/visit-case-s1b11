@@ -42,7 +42,6 @@ vector<Receiver> Receiver::storeFootfallData(const string& footfallRecordString,
 	}
 	
 	cout << "Record Pushed" << endl;
-	cout << footfallRecord.size() << endl;
 	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
 	footfallData.push_back(receiverObj);
 	return footfallData;
