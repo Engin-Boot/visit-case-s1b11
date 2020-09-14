@@ -24,7 +24,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o ReceiverExe Receiver/Receiver.cpp
       
     - name: static analysis
-      run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver-Test/ReceiverTest.cpp .
+      run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver-Test/ReceiverTest.cpp -iSender-Test/SenderTest.cpp .
       
     - name: run
       run: ./SenderExe | ./ReceiverExe
@@ -35,8 +35,14 @@ jobs:
     - name: coverage report Receiver
       run: gcov -r Receiver.cpp
       
+    - name: build Sender-Test
+      run: g++ -Wall -Wextra -Werror --coverage -o SenderTestExe Sender-Test/*.cpp
+    
     - name: build Receiver-Test
       run: g++ -Wall -Wextra -Werror --coverage -o ReceiverTestExe Receiver-Test/*.cpp
+    
+    - name: run Sender-Test
+      run: ./SenderTestExe
     
     - name: run Receiver-Test
       run: ./ReceiverTestExe
