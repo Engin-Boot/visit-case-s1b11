@@ -22,7 +22,7 @@ TEST_CASE("when footfall data containing all valid data is read by sender then i
 
 TEST_CASE("when footfall data containing some invalid data is read by sender then it prints the valid data only and removes invalid data") 
 {
-     TSender::fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
+     Sender::fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
      std::ifstream fin1("OutputSenderTestData/visitdataouttest1.txt");
     std::string testData((std::istreambuf_iterator<char>(fin1)), std::istreambuf_iterator<char>());
     fin1.close();
