@@ -33,7 +33,7 @@ jobs:
       run: gcov -r Sender.cpp 
       
     - name: coverage report Receiver
-      run: gcov -a Receiver.cpp
+      run: gcov -b Receiver.cpp
       
     - name: build Sender-Test
       run: g++ -Wall -Wextra -Werror --coverage -o SenderTestExe Sender-Test/*.cpp
