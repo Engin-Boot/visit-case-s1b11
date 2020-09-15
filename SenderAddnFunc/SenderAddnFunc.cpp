@@ -109,14 +109,14 @@ std::vector<std::vector<int>> getinttypemanualdata(std::vector<std::vector<std::
 	return manual;
 }
 
-std::vector<std::vector<int>> compareandinsert(std::vector<int> mi,std::vector<int> vi , std::vector<std::vector<int>> vec, unsigned int i)
+std::vector<std::vector<int>> compareandinsert(std::vector<int>& mi,std::vector<int>& vi , std::vector<std::vector<int>> vec, unsigned int i)
 {
 	  if(mi != vi)
 	  vec.insert(vec.begin() + i, mi);	
 	  return vec;		
 }
 
-std::vector<std::vector<int>> reconcile(std::vector<std::vector<int>> valid, std::vector<std::vector<int>> manual)
+std::vector<std::vector<int>> reconcile(std::vector<std::vector<int>>& valid, std::vector<std::vector<int>>& manual)
 {
 	  std::vector<std::vector<int>> v = valid;
 	  std::vector<std::vector<int>> m = manual;
