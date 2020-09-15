@@ -16,9 +16,6 @@ jobs:
     
     - name: install cppcheck static analysis
       run: sudo apt-get update && sudo apt-get install -y cppcheck
-    
-    - name: build Sender-Test with extended functionality
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtTestExe SenderExtFun-Test/*.cpp
       
     - name: build Sender
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExe Sender/Sender.cpp
@@ -61,3 +58,11 @@ jobs:
     
     - name: run extended functionality
       run: ./SenderExtFuncExe | ./ReceiverExe
+      
+    - name: build Sender-Test with extended functionality
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtTestExe SenderExtFun-Test/*.cpp
+    
+    - name: run Sender Extended Functionality-Test
+      run: ./SenderExtTestExe
+     
+     
