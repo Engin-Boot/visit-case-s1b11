@@ -64,9 +64,9 @@ jobs:
     
     - name: run Sender Extended Functionality-Test
       run: ./SenderExtTestExe
-     
-    - name: coverage report Sender Extended Functionality
-      run: gcov -b -c SenderExtFnc.cpp
     
     - name: coverage report Sender Extended Functionality-Test
       run: gcov -b -c SenderExtFunctions.cpp
+    
+    - name: coverage report Sender Extended Functionality
+      run: gcov -b -c SenderExtFunc.cpp
