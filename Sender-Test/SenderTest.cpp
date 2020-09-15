@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-//visitdataout1.txt is the file to which sender writes ffotfall data after printing the same to the console
+//visitdataout1.txt is an empty file to which sender writes the data which is also printed to console AND this file is cleared once the workflow ends
 TEST_CASE("when footfall data containing all valid data is read by sender then it prints all the valid data") 
 {
      Sender::fetchValidateandPrintFootfallData("test-data/visitdata1.csv");
