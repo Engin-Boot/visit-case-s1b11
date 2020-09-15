@@ -79,26 +79,40 @@ void printValiddata(std::vector<std::vector<int>> &data)
         std::cout << std::endl; 
      }
 }
+
+bool is_file_exists(std::string filename)
+{
+	std::ifstream infile(filename);
+    return infile.good();	
+}
+
 void Sender::fetchValidateandPrintFootfallData(std::string filename)
 {	
-   // Creating an object of CSVfile reader
+   if(is_file_exists(filename)==true)
+   {
+	// Creating an object of CSVfile reader
 	CSVReader filereader(filename,",");
-    // Get the data from CSV File
-    std::vector<std::vector<std::string>> actualdata  = filereader.fetchActualFootfallData();
-    std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
-    // Print the content
-    // data is now only non-negative integer because person id, date time are non negative integers
-   int halfofFetchedEntriesfromSensorData = actualdata.size()/2;
-   int totalValidEntries = validData.size();
+        // Get the data from CSV File
+        std::vector<std::vector<std::string>> actualdata  = filereader.fetchActualFootfallData();
+        std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
+        // Print the content
+        // data is now only non-negative integer because person id, date time are non negative integers
+        int halfofFetchedEntriesfromSensorData = actualdata.size()/2;
+        int totalValidEntries = validData.size();
    	if(totalValidEntries < halfofFetchedEntriesfromSensorData)
 		std::cout<<"No valid data"<<std::endl;
 	else
     		printValiddata(validData);
+   }
+	else
+   {
+		std::cout<<"File doesn't exist"<<std::endl;
+	  
+   }
 }
+
 int main()
 {
-    Sender::fetchValidateandPrintFootfallData("test-data/visitdata2.csv");
-    //fetchValidateandPrintFootfallData("test-data/invalidvisitdata1.csv");
-    
+    Sender::fetchValidateandPrintFootfallData("test-data/visitdata2.csv"); 
     return 0;
 }
