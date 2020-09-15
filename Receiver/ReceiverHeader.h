@@ -7,7 +7,6 @@ using namespace std;
 class Receiver
 {
 private:
-	//vector<Receiver> footfallData;
 	int id = 0;
 	int hour = 0;
 	int minute = 0;
@@ -28,9 +27,9 @@ public:
 	vector<Receiver> storeFootfallData(const string&, vector<Receiver>);
 	vector<Receiver> averageFootfallsPerHourDaily(vector<Receiver>);
 	void displayHourlyAverageDailyData(vector<Receiver>);
-	void displayDailyAverageWeeklyData(vector<Receiver>);
 	vector<Receiver> averageDailyFootfallsWeekly(vector<Receiver>);
 	int setFlagStatus(int);
+	void displayDailyAverageWeeklyData(vector<Receiver>);
 	vector<Receiver> peakDailyFootfallLastMonth(vector<Receiver>);
 	vector<Receiver> getLastMonthFootfallData(vector<Receiver>);
 	vector<Receiver> getPeakDailyFootfallsLastMonth(vector<Receiver>);
