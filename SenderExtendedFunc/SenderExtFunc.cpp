@@ -176,6 +176,8 @@ void Sender::fetchValidateReconcileandPrintFootfallData(std::string& filename,st
 
 int main()
 {
-    Sender::fetchValidateReconcileandPrintFootfallData("test-data/visitdata2.csv","test-data/manuallog2.csv");
+    std::string filename = "test-data/visitdata2.csv";
+	std::string manuallog = "test-data/manuallog2.csv";
+	Sender::fetchValidateReconcileandPrintFootfallData(filename,manuallog);
     return 0;
 }
