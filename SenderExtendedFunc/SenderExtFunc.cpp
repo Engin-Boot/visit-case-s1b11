@@ -90,7 +90,7 @@ void printValiddata(std::vector<std::vector<int>> &data)
 
 bool is_file_exists(std::string filename)
 {
-	  std::ifstream infile(filename);
+    std::ifstream infile(filename);
     return infile.good();	
 }
 
@@ -99,11 +99,11 @@ std::vector<std::vector<int>> getinttypemanualdata(std::vector<std::vector<std::
 	  std::vector<std::vector<int>> manual;
 	  for(std::vector<std::string> vec:manualdata)
 	  {
-		    std::vector<int> row;
-        for (std::string data : vec)
-       	{
-			      row.push_back(stoi(data));
-        }
+		std::vector<int> row;
+        	for (std::string data : vec)
+       		{
+			row.push_back(stoi(data));
+        	}
 		manual.push_back(row);
 	  }
 	return manual;
