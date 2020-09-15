@@ -48,6 +48,10 @@ without re-testing against all Receivers again.
 To simulate different patterns of footfalls, the Sender reads a CSV file
 as input.
 
+- Sender validates the footfall entries and removes invalid entries if any
+- It prints the valid footfall entries to the console in the format
+id, hour, minute, second, day, date, month, year
+
 The Receiver writes aggregates into another CSV file, which a spreadsheet app
 can load for further processing.
 
@@ -78,6 +82,12 @@ Footfall sensors can malfunction.
 The facility keeps a manual log of footfalls as well.
 Make it possible to reconcile the records with the manual log,
 without having to simulate the input again.
+
+-Sender reads two CSV files as input.
+One is data from footfall sensor and the other is manual log.
+
+-Sender validates the sensor data and reconcile with the records in manual log
+and prints it to console
 
 ## Evaluation Criteria
 
