@@ -26,7 +26,7 @@ jobs:
     - name: static analysis
       run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver-Test/ReceiverTest.cpp -iSender-Test/SenderTest.cpp -iSenderExtFun-Test/SenderExtTest.cpp .
       
-    - name: run
+    - name: run main functionality
       run: ./SenderExe | ./ReceiverExe
     
     - name: coverage report Sender
@@ -52,3 +52,9 @@ jobs:
     
     - name: coverage report Receiver-Test
       run: gcov -b -c ReceiverTestFunctions.cpp
+    
+    - name: build Sender with extended functionality
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtFuncExe SenderExtendedFunc/SenderExtFunc.cpp
+    
+    - name: run extended functionality
+      run: ./SenderExtFuncExe | ./ReceiverExe
