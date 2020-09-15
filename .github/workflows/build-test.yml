@@ -18,7 +18,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
       
     - name: build Sender
-      run: g++ -Wall -Wextra -Werror --coverage -o SenderExe Sender/Sender.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExe Sender/Sender.cpp
       
     - name: build Receiver
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverExe Receiver/Receiver.cpp
@@ -30,13 +30,13 @@ jobs:
       run: ./SenderExe | ./ReceiverExe
     
     - name: coverage report Sender
-      run: gcov -r Sender.cpp 
+      run: gcov -b -c Sender.cpp 
       
     - name: coverage report Receiver
       run: gcov -b -c Receiver.cpp
       
     - name: build Sender-Test
-      run: g++ -Wall -Wextra -Werror --coverage -o SenderTestExe Sender-Test/*.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderTestExe Sender-Test/*.cpp
     
     - name: build Receiver-Test
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverTestExe Receiver-Test/*.cpp
@@ -47,5 +47,8 @@ jobs:
     - name: run Receiver-Test
       run: ./ReceiverTestExe
     
-    - name: coverage report ReceiverTest
+    - name: coverage report Sender-Test
+      run: gcov -b -c SenderTestFunctions.cpp
+    
+    - name: coverage report Receiver-Test
       run: gcov -b -c ReceiverTestFunctions.cpp
