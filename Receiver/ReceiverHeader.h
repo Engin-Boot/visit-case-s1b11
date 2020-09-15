@@ -11,7 +11,7 @@ private:
 	int hour = 0;
 	int minute = 0;
 	int second = 0;
-	int day = 0;
+	int day = 0; // 1 = monday 2 = tuesday... 7 = sunday
 	int date;
 	int month;
 	int year;
