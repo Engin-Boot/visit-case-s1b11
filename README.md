@@ -57,6 +57,21 @@ Aggregates are in the form of:
 - Average daily footfalls in a week
 - Peak daily footfall in the last month
 
+### Average footfalls per hour, shown over a day
+Add the footfalls for a single day and divide the sum by number of working hours.
+In this case, assume working hours to be 4.
+The result has the columns - date, month, year and average footfall count for that day.
+
+### Average daily footfalls in a week
+Add the footfalls for a week and divide the sum by number of work days in a week.
+In this case, assume working days to be 7. A week starts on Monday and ends on Sunday.
+The result has the columns - start date of week, month, year and average footfall count for week.
+
+### Peak daily footfalls in the last month
+Calculate the daily footfalls for all days in the last month. 
+The result is dates that have highest footfalls for that month.
+The result has the columns - date, month, year and peak footfall count.
+
 ## Extended Functionality
 
 Footfall sensors can malfunction.
