@@ -132,7 +132,7 @@ std::vector<std::vector<int>> reconcile(std::vector<std::vector<int>>& valid, st
 	return v;
 }
 
-void processthefiles(std::string filename,std::string manuallog)
+void processthefiles(std::string& filename,std::string& manuallog)
 {
 	   // Creating an object of CSVfile reader
 	  CSVReader filereader(filename,",");
@@ -144,7 +144,7 @@ void processthefiles(std::string filename,std::string manuallog)
 	  std::vector<std::vector<int>> manualdata = getinttypemanualdata(manualData);	
 	  std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
 	  // Print the content
-    // data is now only non-negative integer because person id, date time are non negative integers
+    	  // data is now only non-negative integer because person id, date time are non negative integers
 	  int halfofFetchedEntriesfromSensorData = actualdata.size()/2;
 	  int totalValidEntries = validData.size();
 	  if(totalValidEntries < halfofFetchedEntriesfromSensorData)
@@ -158,7 +158,7 @@ void processthefiles(std::string filename,std::string manuallog)
 	  }
 }	
 	
-void Sender::fetchValidateReconcileandPrintFootfallData(std::string filename,std::string manuallog)
+void Sender::fetchValidateReconcileandPrintFootfallData(std::string& filename,std::string& manuallog)
 {
    	if(is_file_exists(filename)==true && is_file_exists(manuallog)==true)
    	{
