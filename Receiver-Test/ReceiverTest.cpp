@@ -70,13 +70,19 @@ TEST_CASE("Print no data for Peak daily footfalls last month") {
     }
 }
 
-TEST_CASE("Read Sender Data") {
+TEST_CASE("when day is 1 return 0 else return 1") {
+    REQUIRE(obj.setFlagStatus(1) == 0);
+    REQUIRE(obj.setFlagStatus(3) == 1);	
+}
+
+TEST_CASE("(Data 1) Read Sender Data") {
+    senderData.clear();	
     string fileName = "test-data/Visit Count Data.csv";
     int senderDataSize = printSenderData(fileName);
     REQUIRE(senderDataSize != 0);
 }
 
-TEST_CASE("Average footfalls per hour day wise") {
+TEST_CASE("(Data 1) Average footfalls per hour day wise") {
     vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
     obj.displayHourlyAverageDailyData(result);
     ifstream fin1("test-data/Average Footfalls Hourly Test.csv");
@@ -88,7 +94,7 @@ TEST_CASE("Average footfalls per hour day wise") {
     REQUIRE(testDataBuffer == actualDataBuffer);
 }
 
-TEST_CASE("Average footfalls per day week wise") {
+TEST_CASE("(Data 1) Average footfalls per day week wise") {
     vector<Receiver> result = obj.averageDailyFootfallsWeekly(senderData);
     obj.displayDailyAverageWeeklyData(result);
     ifstream fin1("test-data/Average Footfalls Weekly Test.csv");
@@ -100,10 +106,10 @@ TEST_CASE("Average footfalls per day week wise") {
     REQUIRE(testDataBuffer == actualDataBuffer);
 }
 
-TEST_CASE("Peak daily footfalls last month") {
+TEST_CASE("(Data 1) Peak daily footfalls last month") {
     vector<Receiver> result = obj.peakDailyFootfallLastMonth(senderData);
     obj.displayPeakDailyFootfallLastMonth(result);
-    ifstream fin1("test-data/test-data/Peak Daily Footfalls Last Month Test.csv");
+    ifstream fin1("test-data/Peak Daily Footfalls Last Month Test.csv");
     string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
     fin1.close();
     ifstream fin2("test-data/test-data/Peak Daily Footfalls Last Month.csv");
@@ -112,7 +118,88 @@ TEST_CASE("Peak daily footfalls last month") {
     REQUIRE(testDataBuffer == actualDataBuffer);
 }
 
-TEST_CASE("when day is 1 return 0 else return 1") {
-    REQUIRE(obj.setFlagStatus(1) == 0);
-    REQUIRE(obj.setFlagStatus(3) == 1);	
+TEST_CASE("Read Sender Data (Data 2)") {
+    senderData.clear();
+    string fileName = "test-data/Visit Count Data 2.csv";
+    int senderDataSize = printSenderData(fileName);
+    REQUIRE(senderDataSize != 0);
+}
+
+TEST_CASE("(Data 2) Average footfalls per hour day wise") {
+    vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
+    obj.displayHourlyAverageDailyData(result);
+    ifstream fin1("test-data/Average Footfalls Hourly Test 2.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Hourly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
+
+TEST_CASE("(Data 2) Average footfalls per day week wise") {
+    vector<Receiver> result = obj.averageDailyFootfallsWeekly(senderData);
+    obj.displayDailyAverageWeeklyData(result);
+    ifstream fin1("test-data/Average Footfalls Weekly Test 2.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Weekly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
+
+TEST_CASE("(Data 2) Peak daily footfalls last month") {
+    vector<Receiver> result = obj.peakDailyFootfallLastMonth(senderData);
+    obj.displayPeakDailyFootfallLastMonth(result);
+    ifstream fin1("test-data/test-data/Peak Daily Footfalls Last Month Test 2.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Peak Daily Footfalls Last Month.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
+
+TEST_CASE("Read Sender Data (Data 3)") {
+    senderData.clear();
+    string fileName = "test-data/Visit Count Data 3.csv";
+    int senderDataSize = printSenderData(fileName);
+    REQUIRE(senderDataSize != 0);
+}
+
+TEST_CASE("(Data 3) Average footfalls per hour day wise") {
+    vector<Receiver> result = obj.averageFootfallsPerHourDaily(senderData);
+    obj.displayHourlyAverageDailyData(result);
+    ifstream fin1("test-data/Average Footfalls Hourly Test 3.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Hourly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
+}
+
+TEST_CASE("(Data 3) Average footfalls per day week wise") {
+    vector<Receiver> result = obj.averageDailyFootfallsWeekly(senderData);
+    obj.displayDailyAverageWeeklyData(result);
+    ifstream fin1("test-data/Average Footfalls Weekly Test 3.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Average Footfalls Weekly.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);	
+}
+
+TEST_CASE("(Data 3) Peak daily footfalls last month") {
+    vector<Receiver> result = obj.peakDailyFootfallLastMonth(senderData);
+    obj.displayPeakDailyFootfallLastMonth(result);
+    ifstream fin1("test-data/test-data/Peak Daily Footfalls Last Month Test 3.csv");
+    string testDataBuffer((istreambuf_iterator<char>(fin1)), istreambuf_iterator<char>());
+    fin1.close();
+    ifstream fin2("test-data/Peak Daily Footfalls Last Month.csv");
+    string actualDataBuffer((istreambuf_iterator<char>(fin2)), istreambuf_iterator<char>());
+    fin2.close();
+    REQUIRE(testDataBuffer == actualDataBuffer);
 }
