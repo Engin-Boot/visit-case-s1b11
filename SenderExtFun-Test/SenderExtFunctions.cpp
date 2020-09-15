@@ -132,7 +132,7 @@ std::vector<std::vector<int>> reconcile(std::vector<std::vector<int>>& valid, st
 	return v;
 }
 
-void processthefiles(std::string filename,std::string manuallog)
+void processthefiles(std::string& filename,std::string& manuallog)
 {
 	   // Creating an object of CSVfile reader
 	  CSVReader filereader(filename,",");
@@ -158,7 +158,7 @@ void processthefiles(std::string filename,std::string manuallog)
 	  }
 }	
 	
-void Sender::fetchValidateReconcileandPrintFootfallData(std::string filename,std::string manuallog)
+void Sender::fetchValidateReconcileandPrintFootfallData(std::string& filename,std::string& manuallog)
 {
    	if(is_file_exists(filename)==true && is_file_exists(manuallog)==true)
    	{
