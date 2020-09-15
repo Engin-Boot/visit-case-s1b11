@@ -30,7 +30,7 @@ jobs:
       run: ./SenderExe | ./ReceiverExe
     
     - name: coverage report Sender
-      run: gcov -r Sender.cpp
+      run: gcov -r Sender.cpp 
       
     - name: coverage report Receiver
       run: gcov -r Receiver.cpp
@@ -46,3 +46,6 @@ jobs:
     
     - name: run Receiver-Test
       run: ./ReceiverTestExe
+    
+    - name: coverage report ReceiverTest
+      run: gcov -abcfu ReceiverTestFunctions.cpp
