@@ -6,7 +6,7 @@
 #include<sstream>
 #include <algorithm>
 #include "../Sender/SenderHeader.h"
-
+//sender writes the data which it prints to the console to a textfile. So this file is checked against a standard test file which has actual data that is to be printed.
 std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
 {
     std::fstream file;
@@ -102,7 +102,7 @@ void Sender::fetchValidateandPrintFootfallData(std::string filename)
 	std::vector<std::vector<std::string>> actualdata  = filereader.fetchActualFootfallData();
 	std::vector<std::vector<int>> validData  = removeInvalidEntries(actualdata); //removes rows containing empty data or junk values(like character strings) or negative numbers
 	// Print the content
-    	// data is now only non-negative integer because person id, date time are non negative integers
+    	// data is now only non-negative integer because person id, date and time are non negative integers
 	int halfofFetchedEntriesfromSensorData = actualdata.size()/2;
 	int totalValidEntries = validData.size();
 	if(totalValidEntries < halfofFetchedEntriesfromSensorData)
