@@ -72,9 +72,9 @@ std::vector<std::vector<int>> removeInvalidEntries(std::vector<std::vector<std::
 void printValiddata(std::vector<std::vector<int>> &data)
 {
     std::ofstream fout;
-	  fout.open("OutputSenderTestData/visitdataout1.txt");
-	  std::cout<<"id,hour,minute,second,day,date,month,year"<<std::endl;
-	  fout << "id" << "," << "hour" << "," << "minute" << "," << "second" << "," << "day" << "," << "date" <<"," << "month" <<"," << "year" <<"\n";
+    fout.open("OutputSenderTestData/visitdataout1.txt");
+    std::cout<<"id,hour,minute,second,day,date,month,year"<<std::endl;
+    fout << "id" << "," << "hour" << "," << "minute" << "," << "second" << "," << "day" << "," << "date" <<"," << "month" <<"," << "year" <<"\n";
         for (std::vector<int> vec : data)
         {
               for (int rowdata : vec)
@@ -118,17 +118,17 @@ std::vector<std::vector<int>> compareandinsert(std::vector<int>& mi,std::vector<
 
 std::vector<std::vector<int>> reconcile(std::vector<std::vector<int>>& valid, std::vector<std::vector<int>>& manual)
 {
-	  std::vector<std::vector<int>> v = valid;
-	  std::vector<std::vector<int>> m = manual;
+    std::vector<std::vector<int>> v = valid;
+    std::vector<std::vector<int>> m = manual;
     for (unsigned int i=0;i<m.size();i++)
-	  {
-		    if (i < v.size())
-		    {
-			    v = compareandinsert(m[i],v[i],v,i);
-			  }
-		  else
-			v.insert(v.begin() + i, m[i]);
-	  }
+    {
+	if (i < v.size())
+	{
+	    v = compareandinsert(m[i],v[i],v,i);
+	}
+	else
+	    v.insert(v.begin() + i, m[i]);
+    }
 	return v;
 }
 
@@ -149,12 +149,12 @@ void processthefiles(std::string& filename,std::string& manuallog)
 	  int totalValidEntries = validData.size();
 	  if(totalValidEntries < halfofFetchedEntriesfromSensorData)
 	  {
-		    printValiddata(manualdata); //sensor is completely malfunctioning and take manual data
+		printValiddata(manualdata); //sensor is completely malfunctioning and take manual data
 	  }
 	  else
 	  {
     		std::vector<std::vector<int>> reconcileddata = reconcile(validData,manualdata);
-		    printValiddata(reconcileddata);
+		printValiddata(reconcileddata);
 	  }
 }	
 	
@@ -162,21 +162,21 @@ void Sender::fetchValidateReconcileandPrintFootfallData(std::string& filename,st
 {
    	if(is_file_exists(filename)==true && is_file_exists(manuallog)==true)
    	{
-		    processthefiles(filename,manuallog);
+		processthefiles(filename,manuallog);
    	}
   	else
    	{
-	   	  std::ofstream fout;
-		    fout.open("OutputSenderTestData/visitdataout1.txt");
-		    std::cout<<"file doesn't exist"<<std::endl;
-		    fout<<"file doesn't exist";
-		    fout.close();	  
+	   	std::ofstream fout;
+		fout.open("OutputSenderTestData/visitdataout1.txt");
+		std::cout<<"file doesn't exist"<<std::endl;
+		fout<<"file doesn't exist";
+		fout.close();	  
    	}	
 }
 
 int main()
 {
-    std::string filename = "test-data/visitdata2.csv";
+    	std::string filename = "test-data/visitdata2.csv";
 	std::string manuallog = "test-data/manuallog2.csv";
 	Sender::fetchValidateReconcileandPrintFootfallData(filename,manuallog);
     return 0;
