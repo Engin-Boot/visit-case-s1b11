@@ -5,7 +5,7 @@
 #include <string>
 #include<sstream>
 #include <algorithm>
-#include "../Sender/SenderHeader.h"
+#include "SenderHeader.h"
 //sender writes the data which it prints to the console to a textfile. So this file is checked against a standard test file which has actual data that is to be printed.
 std::vector<std::vector<std::string>> CSVReader::fetchActualFootfallData()
 {
