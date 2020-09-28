@@ -36,7 +36,7 @@ jobs:
       run: gcov -b -c Receiver.cpp
       
     - name: build Sender-Test
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderTestExe Sender-Test/SenderTest.cpp Sender/SenderFunctions.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderTestExe Sender-Test/SenderTest.cpp Sender/Sender.cpp
     
     - name: build Receiver-Test
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverTestExe Receiver-Test/ReceiverTest.cpp Receiver/Receiver.cpp
@@ -47,26 +47,17 @@ jobs:
     - name: run Receiver-Test
       run: ./ReceiverTestExe
     
-    - name: coverage report Sender-Test
-      run: gcov -b -c SenderTestFunctions.cpp
-    
-    - name: coverage report Receiver-Test
-      run: gcov -b -c ReceiverTestFunctions.cpp
-    
     - name: build Sender with extended functionality
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtFuncExe SenderExtendedFunc/SenderExtFunc.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtFuncExe SenderExtendedFunc/*.cpp
     
     - name: run extended functionality
       run: ./SenderExtFuncExe | ./ReceiverExe
       
     - name: build Sender-Test with extended functionality
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtTestExe SenderExtFun-Test/*.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtTestExe SenderExtFun-Test/SenderExtTest.cpp SenderExtendedFunc/SenderExtFunc.cpp
     
     - name: run Sender Extended Functionality-Test
       run: ./SenderExtTestExe
-    
-    - name: coverage report Sender Extended Functionality-Test
-      run: gcov -b -c SenderExtFunctions.cpp
     
     - name: coverage report Sender Extended Functionality
       run: gcov -b -c SenderExtFunc.cpp
