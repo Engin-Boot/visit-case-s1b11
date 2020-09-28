@@ -21,7 +21,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExe Sender/*.cpp
       
     - name: build Receiver
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverExe Receiver/Receiver.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverExe Receiver/*.cpp
       
     - name: static analysis
       run: cppcheck --enable=all --suppress=missingIncludeSystem --error-exitcode=1 -iReceiver-Test/ReceiverTest.cpp -iSender-Test/SenderTest.cpp -iSenderExtFun-Test/SenderExtTest.cpp .
@@ -39,7 +39,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderTestExe Sender-Test/SenderTest.cpp Sender/SenderFunctions.cpp
     
     - name: build Receiver-Test
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverTestExe Receiver-Test/*.cpp
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverTestExe Receiver-Test/ReceiverTest.cpp Receiver/Receiver.cpp
     
     - name: run Sender-Test
       run: ./SenderTestExe
