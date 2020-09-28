@@ -32,17 +32,17 @@ jobs:
     - name: build Sender-Test
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderTestExe Sender-Test/SenderTest.cpp Sender/Sender.cpp
     
-    - name: build Receiver-Test
-      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverTestExe Receiver-Test/ReceiverTest.cpp Receiver/Receiver.cpp
-    
     - name: run Sender-Test
       run: ./SenderTestExe
     
+    - name: coverage report Sender
+      run: gcov -b -c Sender.cpp
+    
+    - name: build Receiver-Test
+      run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o ReceiverTestExe Receiver-Test/ReceiverTest.cpp Receiver/Receiver.cpp
+    
     - name: run Receiver-Test
       run: ./ReceiverTestExe
-    
-    - name: coverage report Sender
-      run: gcov -b -c Sender.cpp 
       
     - name: coverage report Receiver
       run: gcov -b -c Receiver.cpp
