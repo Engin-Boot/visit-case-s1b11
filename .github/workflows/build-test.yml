@@ -28,12 +28,6 @@ jobs:
       
     - name: run main functionality
       run: ./SenderExe | ./ReceiverExe
-    
-    - name: coverage report Sender
-      run: gcov -b -c Sender.cpp 
-      
-    - name: coverage report Receiver
-      run: gcov -b -c Receiver.cpp
       
     - name: build Sender-Test
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderTestExe Sender-Test/SenderTest.cpp Sender/Sender.cpp
@@ -46,6 +40,12 @@ jobs:
     
     - name: run Receiver-Test
       run: ./ReceiverTestExe
+    
+    - name: coverage report Sender
+      run: gcov -b -c Sender.cpp 
+      
+    - name: coverage report Receiver
+      run: gcov -b -c Receiver.cpp
     
     - name: build Sender with extended functionality
       run: g++ -Wall -Wextra -Werror -fprofile-arcs -ftest-coverage -o SenderExtFuncExe SenderExtendedFunc/*.cpp
