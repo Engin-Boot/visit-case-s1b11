@@ -184,6 +184,7 @@ vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallD
 
 vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallData)
 {
+	cout<<"get last"<<endl;
 	time_t currentTime = time(0);
 	tm *localTime = localtime(&currentTime);
 	int lastMonth = localTime->tm_mon;
