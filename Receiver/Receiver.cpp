@@ -154,6 +154,7 @@ void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeekly
 // calculate peak daily footfall in the last month
 vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallData)
 {
+	cout << "Inside" <<endl;
 	vector<Receiver> dailyFootfallLastMonthData;
 	vector<Receiver> footfallLastMonthData = getLastMonthFootfallData(footfallData); // get footfall records for last month
 	Receiver receiverObj(footfallLastMonthData[0].date, footfallLastMonthData[0].month, footfallLastMonthData[0].year, 0);
