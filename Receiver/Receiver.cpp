@@ -23,7 +23,6 @@ vector<Receiver> Receiver::readSenderData()
 	vector<Receiver> footfallData;
 	string footfallRecordString;
 	getline(cin, footfallRecordString);
-	cout << footfallRecordString << endl; // print column headings
 	while (getline(cin, footfallRecordString))
 	{
 		footfallData = storeFootfallData(footfallRecordString, footfallData);
@@ -191,7 +190,6 @@ vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallDat
 			lastMonthFootfallData.push_back(footfallData[i]);
 		}
 	}
-	cout<<"size get last "<<lastMonthFootfallData.size()<<endl;
 	return lastMonthFootfallData;
 }
 
