@@ -187,7 +187,8 @@ vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallDat
 	cout<<"get last"<<endl;
 	time_t currentTime = time(0);
 	tm *localTime = localtime(&currentTime);
-	int lastMonth = localTime->tm_mon;
+	//int lastMonth = localTime->tm_mon;
+	int lastMonth = 8;
 	vector<Receiver> lastMonthFootfallData;
 	for(unsigned int i = 0; i < footfallData.size(); i++)
 	{
