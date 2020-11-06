@@ -26,7 +26,6 @@ vector<Receiver> Receiver::readSenderData()
 	cout << footfallRecordString << endl; // print column headings
 	while (getline(cin, footfallRecordString))
 	{
-		cout << footfallRecordString << endl; // print footfall record
 		footfallData = storeFootfallData(footfallRecordString, footfallData);
 	}
 	return footfallData;
@@ -43,7 +42,6 @@ vector<Receiver> Receiver::storeFootfallData(const string& footfallRecordString,
 		footfallRecord.push_back(stoi(footfallElement));
 	}
 	
-	cout <<"Record pushed" <<endl;
 	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
 	footfallData.push_back(receiverObj);
 	return footfallData;
@@ -154,7 +152,6 @@ void Receiver::displayDailyAverageWeeklyData(vector<Receiver> dailyAverageWeekly
 // calculate peak daily footfall in the last month
 vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallData)
 {
-	cout << "Inside" <<endl;
 	vector<Receiver> dailyFootfallLastMonthData;
 	vector<Receiver> footfallLastMonthData = getLastMonthFootfallData(footfallData); // get footfall records for last month
 	Receiver receiverObj(footfallLastMonthData[0].date, footfallLastMonthData[0].month, footfallLastMonthData[0].year, 0);
@@ -178,15 +175,13 @@ vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallD
 	dailyFootfallLastMonthData.push_back(receiverObj); // store last object
 	
 	vector<Receiver> peakDailyFootfallsLastMonthData = getPeakDailyFootfallsLastMonth(dailyFootfallLastMonthData); // get records for days which had peak footfall counts
-	cout<<"done"<<endl;
 	return peakDailyFootfallsLastMonthData;
 }
 
 vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallData)
 {
-	cout<<"get last"<<endl;
-	time_t currentTime = time(0);
-	tm *localTime = localtime(&currentTime);
+	//time_t currentTime = time(0);
+	//tm *localTime = localtime(&currentTime);
 	//int lastMonth = localTime->tm_mon;
 	int lastMonth = 8;
 	vector<Receiver> lastMonthFootfallData;
