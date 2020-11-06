@@ -163,6 +163,7 @@ vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallD
 		if(receiverObj.date == footfallLastMonthData[i].date) // if footfallLastMonthData[i].date is equal to date whose count is being computed
 		{
 			receiverObj.dailyCount += 1;
+			cout<<"increase"<<endl;
 		}
 		else
 		{
@@ -177,7 +178,7 @@ vector<Receiver> Receiver::peakDailyFootfallLastMonth(vector<Receiver> footfallD
 	dailyFootfallLastMonthData.push_back(receiverObj); // store last object
 	
 	vector<Receiver> peakDailyFootfallsLastMonthData = getPeakDailyFootfallsLastMonth(dailyFootfallLastMonthData); // get records for days which had peak footfall counts
-	
+	cout<<"done"<<endl;
 	return peakDailyFootfallsLastMonthData;
 }
 
