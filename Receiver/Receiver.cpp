@@ -196,6 +196,7 @@ vector<Receiver> Receiver::getLastMonthFootfallData(vector<Receiver> footfallDat
 			lastMonthFootfallData.push_back(footfallData[i]);
 		}
 	}
+	cout<<"size get last "<<lastMonthFootfallData.size()<<endl;
 	return lastMonthFootfallData;
 }
 
