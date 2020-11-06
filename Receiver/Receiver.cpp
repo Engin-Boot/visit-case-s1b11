@@ -26,7 +26,6 @@ vector<Receiver> Receiver::readSenderData()
 	cout << footfallRecordString << endl; // print column headings
 	while (getline(cin, footfallRecordString))
 	{
-		cout << footfallRecordString << endl; // print footfall record
 		footfallData = storeFootfallData(footfallRecordString, footfallData);
 	}
 	return footfallData;
@@ -43,7 +42,6 @@ vector<Receiver> Receiver::storeFootfallData(const string& footfallRecordString,
 		footfallRecord.push_back(stoi(footfallElement));
 	}
 	
-	cout << "Record Pushed" << endl;
 	Receiver receiverObj(footfallRecord[0], footfallRecord[1], footfallRecord[2], footfallRecord[3], footfallRecord[4], footfallRecord[5], footfallRecord[6], footfallRecord[7]);
 	footfallData.push_back(receiverObj);
 	return footfallData;
