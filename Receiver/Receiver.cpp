@@ -26,6 +26,7 @@ vector<Receiver> Receiver::readSenderData()
 	cout << footfallRecordString << endl; // print column headings
 	while (getline(cin, footfallRecordString))
 	{
+		cout << footfallRecordString << endl; // print footfall record
 		footfallData = storeFootfallData(footfallRecordString, footfallData);
 	}
 	return footfallData;
