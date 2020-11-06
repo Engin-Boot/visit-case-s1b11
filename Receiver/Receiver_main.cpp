@@ -9,8 +9,6 @@ int main()
 {
 	Receiver receiverObj;
 	
-	cout << "In receiver main" << endl;
-	
 	vector<Receiver> footfallData = receiverObj.readSenderData();
 	
 	if(footfallData.size() != 0) // if sender data is available
